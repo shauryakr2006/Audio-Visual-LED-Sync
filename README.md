@@ -46,15 +46,11 @@ Transform any ELK-BLEDOM RGB LED strip into an immersive audio-visual display. C
 
 This app works with **any single-colour RGB LED strip using the ELK-BLEDOM Bluetooth protocol**, including:
 
-- **Gesto Smart LED Strip** (primary target)
+- **Gesto Smart LED Strip** (my LED)
 - **ELK-BLEDOM generic RGB strips** (most common budget option)
 - Any BLE RGB controller compatible with the ELK-BLEDOM protocol
 
-**Protocol:** Bluetooth Low Energy (BLE) GATT write to characteristic `0000fff3-0000-1000-8000-00805f9b34fb`
-
-**Command format:** `[0x7e, 0x00, 0x05, 0x03, R, G, B, 0x00, 0xef]`
-
-To support a different MAC address or UUID, edit `config.py`:
+## To support a your MAC address or UUID, edit `config.py`:
 ```python
 MAC_ADDR   = "YOUR:DEVICE:MAC:ADDRESS"  # Default: "BE:37:63:00:0C:80"
 WRITE_UUID = "your-characteristic-uuid"  # Default: "0000fff3-0000-1000-8000-00805f9b34fb"
@@ -77,7 +73,7 @@ WRITE_UUID = "your-characteristic-uuid"  # Default: "0000fff3-0000-1000-8000-008
 3. Double-click to launch — no installation needed, no dependencies required
 4. Pair your LED strip via Windows Bluetooth settings first
 
-### Option 2: Install from Source (Python)
+### Option 2: Install from Source (Python)(Recommended)
 
 **Requirements:**
 - Python 3.10 or higher
@@ -87,7 +83,7 @@ WRITE_UUID = "your-characteristic-uuid"  # Default: "0000fff3-0000-1000-8000-008
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Audio-Visual-LED-Sync.git
+git clone https://github.com/shauryakr2006/Audio-Visual-LED-Sync.git
 cd Audio-Visual-LED-Sync
 
 # Create virtual environment (optional but recommended)
@@ -98,7 +94,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # Run the app
-python main.pyw
+python main.py
 ```
 
 ---
@@ -107,16 +103,17 @@ python main.pyw
 
 ### 1. Pair Your LED Strip
 
-1. Open **Windows Settings** → **Bluetooth & devices** → **Devices**
+1. Open a AI chatbot
 2. Power on your LED strip
-3. Click **Add device** → **Bluetooth**
-4. Select your strip from the list (e.g., "Gesto LED", "ELK-BLEDOM")
-5. Wait for pairing confirmation
+3. Tell ur chatbot which LED u have, its protocol
+4. Match the protocol (or maybe ask if ur protocol will work with this project)
+5. Ask it how to find your strip's MAC address and UUID
+6. Configure that in your config.py file
 
 ### 2. Launch the App
 
 - **From .exe:** Double-click `Audio-Visual-LED-Sync.exe`
-- **From source:** `python main.pyw`
+- **From source:** in terminal within cloned directory/app/ `python main.py`
 
 ### 3. Start Syncing!
 
@@ -276,15 +273,6 @@ Audio-Visual-LED-Sync/
 
 ---
 
-## 📚 Documentation
-
-- **[Installation Guide](docs/INSTALLATION.md)** — Detailed setup for different scenarios
-- **[Mode Reference](docs/MODES.md)** — Deep dive into each sync mode's algorithm
-- **[Troubleshooting](docs/TROUBLESHOOTING.md)** — FAQ and common fixes
-- **[Contributing](docs/CONTRIBUTING.md)** — How to contribute code, features, bug reports
-
----
-
 ## 🐛 Troubleshooting
 
 ### Strip won't connect
@@ -343,35 +331,11 @@ You're free to use, modify, and distribute this software provided you include th
 
 ---
 
-## 🎓 Credits & Inspirations
-
-- **Bleak** — Outstanding async Bluetooth library
-- **PyAudioWPatch** — WASAPI loopback audio capture
-- **MSS** — Fast screen capture
-- **NumPy** — DSP heavy lifting
-- **Tkinter** — Lightweight GUI framework
-
----
-
 ## 💬 Support & Feedback
 
 - **Found a bug?** [Open an issue](../../issues)
 - **Have a feature idea?** [Start a discussion](../../discussions)
 - **Want to chat?** Check out the [issues](../../issues) tab for community Q&A
-
----
-
-## 📈 Roadmap
-
-### v3.7 (Planned)
-- [ ] Audio device selector in GUI
-- [ ] Preset import/export
-- [ ] BPM manual override
-
-### v4.0 (Exploratory)
-- [ ] Multi-strip support
-- [ ] WebUI companion app
-- [ ] MIDI controller integration
 
 ---
 
