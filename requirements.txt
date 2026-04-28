@@ -1,0 +1,19 @@
+# GestoBridge requirements
+# Install with:  pip install -r requirements.txt
+
+bleak>=0.21.1          # BLE (Bluetooth Low Energy) client
+mss>=9.0.1             # Fast cross-platform screen capture
+Pillow>=10.0.0         # Image processing (album art, tray icon)
+numpy>=1.26.0          # Numerical arrays for audio/screen processing
+pystray>=0.19.5        # System tray icon
+
+# ── Audio backends (install at least one) ────────────────────────────────────
+# Recommended: best WASAPI loopback, no idle hallucination
+pyaudiowpatch>=0.2.12
+
+# Fallback (WASAPI loopback via sounddevice)
+sounddevice>=0.4.6
+
+# ── Optional but recommended ─────────────────────────────────────────────────
+# Required for Auto-Trigger feature (VLC/Spotify/custom process detection)
+psutil>=5.9.0
