@@ -14,7 +14,7 @@ from bleak import BleakClient, BleakError
 
 import state
 from audio_engine import start_audio, stop_audio, tick_music
-from config import (MAC_ADDR, M_MUSIC, M_SYNC, gs,
+from config import (M_MUSIC, M_SYNC, gs,
                     M_BREATHE, M_CANDLE, M_RAINBOW, M_SOLID, M_STROBE, M_WAVE)
 from effects import tick_breathe, tick_candle, tick_rainbow, tick_solid, tick_strobe, tick_wave
 from screen_sync import close_mss, init_mss, tick_sync
@@ -40,7 +40,7 @@ async def _ble_engine():
 
     while state._running:
         try:
-            async with BleakClient(MAC_ADDR, timeout=12.0) as client:
+            async with BleakClient(gs("mac_address"), timeout=12.0) as client:
                 state._ble_ok = True
                 retry         = 2.0
                 if state._status_cb:

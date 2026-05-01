@@ -941,6 +941,30 @@ class GestoBridge(tk.Tk):
         tk.Label(p, text="SETTINGS", font=("Consolas", 12, "bold"),
                  bg=C["bg"], fg=C["dim"]).pack(anchor=tk.W, pady=(0, 4))
 
+        # ── Hardware Configuration ───────────────────────────────────────────
+        self._section(p, "HARDWARE CONFIGURATION", pady=(4, 4))
+        tk.Label(p, text="MAC address of your LED strip. Use MacAddFinder.py to find it.",
+                 font=FS, bg=C["bg"], fg=C["dim"]).pack(anchor=tk.W)
+        
+        mac_row = tk.Frame(p, bg=C["bg"]); mac_row.pack(anchor=tk.W, pady=(8, 0))
+        tk.Label(mac_row, text="Address:", font=FL, bg=C["bg"],
+                 fg=C["accent"], width=8, anchor=tk.W).pack(side=tk.LEFT)
+        
+        self._mac_var = tk.StringVar(value=gs("mac_address"))
+        mac_ent = tk.Entry(mac_row, textvariable=self._mac_var, font=FM, width=20,
+                           bg=C["panel2"], fg=C["text"], insertbackground=C["accent"],
+                           relief=tk.FLAT)
+        mac_ent.pack(side=tk.LEFT, padx=4)
+        
+        def _on_mac_change(e):
+            new_mac = self._mac_var.get().strip().upper()
+            if new_mac:
+                ss("mac_address", new_mac)
+                self._mac_var.set(new_mac)
+        
+        mac_ent.bind("<FocusOut>", _on_mac_change)
+        mac_ent.bind("<Return>", _on_mac_change)
+
         # ── Color Temperature ─────────────────────────────────────────────────
         self._section(p, "COLOR TEMPERATURE", pady=(4, 4))
         tk.Label(p, text="Shifts warmth/coolness of every mode.  6500 K = neutral daylight.",

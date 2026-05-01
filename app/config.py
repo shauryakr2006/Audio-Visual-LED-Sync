@@ -48,6 +48,7 @@ _lock = threading.Lock()
 # FIX: removed duplicate keys that existed in v3.5 (_S had sample_region,
 #      black_thresh, smoothing, sc_correction, gamma defined twice).
 _S: dict = {
+    "mac_address":     MAC_ADDR,
     "mode":            M_SOLID,
     "strip_on":        True,
     "color":           [0, 255, 140],
